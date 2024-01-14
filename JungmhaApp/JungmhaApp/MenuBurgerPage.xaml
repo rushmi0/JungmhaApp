@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JungmhaApp.MenuBurgerPage"
+             Title="BurgerPage">
+
+    <StackLayout BackgroundColor="#EBF8FF">
+
+        <StackLayout BackgroundColor="#F7F7F7">
+
+            <Image Source="logo" HorizontalOptions="Center" HeightRequest="210" WidthRequest="210"/>
+
+            <Label FontSize="17" Padding="45,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Find someone to" TextColor="#0B4550"/>
+                        <Span Text=" walk" TextColor="#45BBBD"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="17" Padding="45,0,0,0" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="your dog" TextColor="#45BBBD"/>
+                        <Span Text=" while you're busy." TextColor="#0B4550"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Padding="5"/>
+
+        </StackLayout>
+
+        
+        <StackLayout Padding="20">
+
+            <Button 
+                x:Name="Homebutton" 
+                BackgroundColor="Transparent" 
+                Text="Home" 
+                HorizontalOptions="Start" 
+                ImageSource="home"/>
+
+            <Button 
+                x:Name="Filterbutton" 
+                BackgroundColor="Transparent" 
+                Text="Dog Walker" 
+                HorizontalOptions="Start" 
+                ImageSource="search"/>
+            
+            <Button 
+                x:Name="DogListbutton" 
+                BackgroundColor="Transparent" 
+                Text="Dogs" 
+                HorizontalOptions="Start" 
+                ImageSource="id"/>
+
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>

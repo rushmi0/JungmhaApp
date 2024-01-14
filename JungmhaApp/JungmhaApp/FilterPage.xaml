@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JungmhaApp.FilterPage">
+
+    <ScrollView>
+        <StackLayout Padding="30" HorizontalOptions="Center">
+            
+            <!-- ปรับ x:Name เป็น walkerCollectionView -->
+            <CollectionView x:Name="walkerCollectionView" SelectionMode="Single">
+           
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <Frame BackgroundColor="#45BBBD"
+                               CornerRadius="15"
+                               BorderColor="#E8E8FF"
+                               HasShadow="True"
+                               Padding="30"
+                               Margin="0,0,20,20">
+                            
+                            <StackLayout>
+                                
+                                <StackLayout Margin="20">
+                                    <!-- เพิ่ม Frame เพื่อสร้างกรอบรอบรูป -->
+                                    <Frame
+                                        BackgroundColor="#E8E8FF"
+                                        CornerRadius="10"
+                                        Padding="5"
+                                        HasShadow="True"
+                                        VerticalOptions="StartAndExpand">
+                                        <Image Source="{Binding Detail.ProfileImage}"
+                                               Aspect="AspectFit"
+                                               VerticalOptions="StartAndExpand"
+                                               HeightRequest="250"
+                                               WidthRequest="250" />
+                                    </Frame>
+                                </StackLayout>
+
+                                
+                                <Frame BackgroundColor="#45BBBD"
+                                       CornerRadius="15"
+                                       BorderColor="#E8E8FF"
+                                       HorizontalOptions="Center">
+                                    
+                                    <StackLayout Padding="10" HorizontalOptions="Center">
+                                    <!-- ปรับ Label ให้ใช้ FormattedText เพื่อความคล้ายคลึงกับ DataTemplate -->
+                                    <Label FontSize="20" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Name: " TextColor="#E8E8FF"/>
+                                                <Span Text="{Binding Detail.Name}" TextColor="#0B4550"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    
+                                    <Label FontSize="20" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Location: " TextColor="#E8E8FF"/>
+                                                <Span Text="{Binding Detail.Location}" TextColor="#0B4550"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    
+                                    <Label Text="Price Rate" FontSize="20" TextColor="#E8E8FF"/>
+                                    <!-- เพิ่ม Space ให้ Code อ่านง่ายขึ้น -->
+                                    
+                                    <Label FontSize="20" Padding="30,0,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text=" - Small " TextColor="#E8E8FF"/>
+                                                <Span Text="{Binding Detail.Price.Small, StringFormat='{0:C}'}" TextColor="#0B4550"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="20" Padding="30,0,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text=" - Medium " TextColor="#E8E8FF"/>
+                                                <Span Text="{Binding Detail.Price.Medium, StringFormat='{0:C}'}" TextColor="#0B4550"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label FontSize="20" Padding="30,0,0,0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text=" - Big " TextColor="#E8E8FF"/>
+                                                <Span Text="{Binding Detail.Price.Big, StringFormat='{0:C}'}" TextColor="#0B4550"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>    
+                                </Frame>
+                                
+                                
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

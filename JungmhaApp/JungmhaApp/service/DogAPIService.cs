@@ -1,0 +1,61 @@
+﻿using JungmhaApp.form;
+using Newtonsoft.Json;
+using System;
+using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace JungmhaApp.service
+{
+    public class DogAPIService
+    {
+        
+        // URL ของ API ที่ใช้รับข้อมูล Walker
+        private readonly string WebAPIUrl = "http://10.0.2.2:8080/api/v1/dogs";
+
+        // HttpClient สำหรับเรียก API
+        private readonly HttpClient client;
+
+
+        public DogAPIService()
+        {
+            // ปรับใช้ HttpClientHandler เพื่อรองรับทั้ง Android และ iOS
+            var httpClientHandler = new HttpClientHandler();
+            httpClientHandler.UseProxy = false;
+
+            client = new HttpClient(httpClientHandler);
+            client.Timeout = TimeSpan.FromSeconds(30);
+        }
+
+
+        // ส่วนที่ใช้ Refresh ข้อมูล Walker จาก API
+        public async Task<ObservableCollection<DogForm>> RefreshDataAsync()
+        {
+            try
+            {
+                // เรียก API ด้วย HttpClient
+                var response = await client.GetAsync(WebAPIUrl);
+
+                // ถ้าเรียก API สำเร็จ
+                if (response.IsSuccessStatusCode)
+                {
+                    // ดึงข้อมูลที่ได้มาในรูปแบบของ JSON
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    // แปลง JSON เป็น C# Object ตามรูปแบบที่กำหนดจาก Walker
+                    return JsonConvert.DeserializeObject<ObservableCollection<DogForm>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                // แสดงข้อผิดพลาดที่เกิดขึ้น
+                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Trace: {ex.StackTrace}");
+            }
+
+            // ถ้ามีข้อผิดพลาดในกระบวนการของ API หรือการแปลง JSON ให้คืนค่า null
+            return null;
+        }
+        
+    }
+}

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JungmhaApp.MainPage">
+
+    <StackLayout BackgroundColor="#45BBBD">
+        <!-- เพิ่ม VerticalOptions เพื่อจัดให้เต็มหน้าจอ -->
+        <Image Source="homepg1" HeightRequest="230" WidthRequest="230" VerticalOptions="CenterAndExpand" />
+
+        <!-- ปรับ BackgroundColor ของ Grid -->
+        <Grid BackgroundColor="#45BBBD">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Content -->
+            <StackLayout 
+                Grid.Row="5" 
+                Grid.Column="1" 
+                Grid.ColumnSpan="5"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="StartAndExpand">
+                
+                <!-- ปรับ Margin เพื่อแยกปุ่มจากขอบหน้าจอ -->
+                <Button 
+                    x:Name="toFilter" 
+                    Text="Get Started" 
+                    BackgroundColor="#F7F7F7" 
+                    TextColor="#45BBBD"
+                    FontSize="18"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center"
+                    Margin="20,0,20,140"/>
+            </StackLayout>
+
+            
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
